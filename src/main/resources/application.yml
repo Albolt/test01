@@ -1,0 +1,12 @@
+spring:
+  jackson:
+    date-formate: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+application: test01
+#spring.jackson.time-zone = GMT+8
+server:
+  port: 8888
+  tomcat:
+    uri-encoding: UTF-8
+logging:
+  config: classpath:logback-spring.xml

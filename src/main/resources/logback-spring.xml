@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://ch.qos.logback/xml/ns/logback"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback http://ch.qos.logback/xml/ns/logback/logback.xsd">
+
+    <springProperty scope="context" name="spring.application.name" source="spring.application.name"
+                    defaultValue="demo-application"/>
+    <springProperty scope="context" name="logging.path" source="logging.path"
+                    defaultValue="${user.home}/logs/${spring.application.name}"/>
+    <springProperty scope="context" name="logging.level.root" source="logging.level.root" defaultValue="info"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{MM-dd HH:mm:ss:SSS} %p %F:%L]-[%X{cat.msg.id}]-%X{PROCID}-->%m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="CatAppender" class="com.dianping.cat.logback.CatLogbackAppender"></appender>
+
+    <appender name="application" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logging.path}/application.log</File>
+        <encoder>
+            <pattern>[%d{MM-dd HH:mm:ss:SSS} %p %F:%L]-[%X{cat.msg.id}]-%X{PROCID}-->%m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logging.path}/application.log.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <maxHistory>14</maxHistory>
+            <maxFileSize>500MB</maxFileSize>
+            <totalSizeCap>40GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 是否打印dubbo elapsed日志。 -->
+    <!--<logger name="com.clubfactory.platform.dubborest.filter" level="DEBUG"/>-->
+    <!--是否打印sql-->
+    <logger name="com.clubfactory.seller.order.core.datasource.db.dao" level="${logging.level.root}" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="application"/>
+    </logger>
+
+    <springProfile name="dev">
+        <root>
+            <level value="${logging.level.root}"/>
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="application"/>
+            <appender-ref ref="CatAppender"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="test">
+        <root>
+            <level value="${logging.level.root}"/>
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="application"/>
+            <appender-ref ref="CatAppender"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="pre">
+        <root>
+            <level value="${logging.level.root}"/>
+            <appender-ref ref="application"/>
+            <appender-ref ref="CatAppender"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <root>
+            <level value="${logging.level.root}"/>
+            <appender-ref ref="application"/>
+            <appender-ref ref="CatAppender"/>
+        </root>
+    </springProfile>
+
+
+</configuration>
