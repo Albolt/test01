@@ -19,6 +19,8 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
@@ -34,10 +36,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Long a = 123l;
-        Long b = 123l;
+//        Scanner sc = new Scanner(System.in);
+//        while (true) {
+//            String a = sc.nextLine();
+//            System.out.println(a.matches("^[A-Z0-9]*"));
+//        }
 
-        System.out.println(a==b);
+        List<String> a = new ArrayList<>();
+        a.stream().filter(x->x.equals("123")).collect(Collectors.toList());
+        for (int i = 0; i < a.size(); i++) {
+            System.out.println(a.get(i));
+        }
+
+        System.out.println(Integer.MAX_VALUE);
     }
 
 }
