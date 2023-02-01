@@ -5,12 +5,12 @@ package com.personal.test01.test001;
  * @12/12/20 8:42 PM
  */
 
-public class People implements Comparable<People> {
+public class People1 implements Comparable<People1> {
 
     private String name;
     private MyDate myDate;
 
-    public People(String name, MyDate myDate) {
+    public People1(String name, MyDate myDate) {
         this.name = name;
         this.myDate = myDate;
     }
@@ -29,7 +29,7 @@ public class People implements Comparable<People> {
     }
 
     @Override
-    public int compareTo(People people) {
+    public int compareTo(People1 people) {
         if (people.getMyDate().compareTo(this.myDate)>0) {
             return -1;
         } else if (people.getMyDate().compareTo(this.myDate)<0) {

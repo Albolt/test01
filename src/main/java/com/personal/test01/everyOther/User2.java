@@ -10,6 +10,8 @@ public class User2 {
 
     private Long score;
 
+    private Integer a;
+
     public User2(){}
 
     public User2(Long score) {
@@ -22,6 +24,7 @@ public class User2 {
 
     @Override
     public String toString() {
-        return "score:"+this.score;
+        return "score:" + this.score +
+                "\n A:" + this.a;
     }
 }

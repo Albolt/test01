@@ -30,7 +30,7 @@ public class MyThread implements Runnable {
 
     @Override
     public void run() {
-        JOptionPane.showMessageDialog(null, "剩余"+tian+"天"+shi+"时"+fen+"分"+miao+"秒", "距离复活", JOptionPane.ERROR_MESSAGE, new Icon() {
+        JOptionPane.showMessageDialog(null, "剩余"+tian+"天"+shi+"时"+fen+"分"+miao+"秒", "复活", JOptionPane.ERROR_MESSAGE, new Icon() {
             @Override
             public void paintIcon(Component c, Graphics g, int x, int y) {
 

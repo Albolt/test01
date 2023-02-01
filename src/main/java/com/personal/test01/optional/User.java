@@ -11,12 +11,13 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User<PK> {
+
+    private PK id;
+
     private Long code;
 
-    private String Email;
-
-    private Map<String, String> a;
+    private Map<String, String> Email;
 
 
 }

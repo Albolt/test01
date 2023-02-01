@@ -1,5 +1,7 @@
 package com.personal.test01.test001;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 
