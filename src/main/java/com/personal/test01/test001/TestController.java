@@ -16,7 +16,7 @@ public class TestController extends Thread{
     public void run() {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH: mm:ss");
-            Date date = sdf.parse("2022-09-30 18: 00: 00");
+            Date date = sdf.parse("2023-08-08 11: 30: 00");
             long millis = date.getTime();
             Integer asd = 0;
             for (int i = 0; i < Integer.MAX_VALUE; i++) {
